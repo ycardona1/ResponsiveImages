@@ -1,0 +1,95 @@
+/* 🌐 Vista móvil (mobile-first, sin media query) */
+body {
+  background-color: #dedede;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+p {
+  font-size: 25px;
+  text-align: center;
+}
+
+/* Galería en mobile: una columna con espacio de 10px */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 10px;
+}
+
+figure {
+  border: 2px solid #333;
+  border-radius: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 📱 Vista Tablet (>= 772px) */
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: 1fr 1fr; /* dos columnas */
+  }
+
+  figure {
+    border-radius: 50%; /* figuras circulares */
+  }
+
+  figure:last-child {
+    grid-column: span 2; /* última figura ocupa ambas columnas */
+  }
+}
+
+/* 💻 Vista Pantalla Grande (>= 992px) */
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr 1fr; /* dos columnas base */
+  }
+
+  figure {
+    border-radius: 0; /* quitar borde circular */
+  }
+
+  figure:nth-child(3n) {
+    grid-column: span 2; /* cada tercera figura ocupa ambas columnas */
+  }
+}
+
+/* 🌀 Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 🌙 Prefers Dark Color Scheme */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111;
+    color: #f5f5a5; /* texto claro amarillento */
+  }
+
+  figure {
+    background-color: #222; /* fondo oscuro */
+    color: #f5f5a5; /* texto claro */
+    border: 2px solid #000; /* borde negro */
+  }
+}
